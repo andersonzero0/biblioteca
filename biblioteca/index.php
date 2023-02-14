@@ -64,12 +64,12 @@
       <h1>Acesso restrito</h1><br>
       <form action="" method="POST">
           <label>Login:</label>
-          <input type="text" name="login"><br><br>
+          <input type="text" id="loginInput" name="login"><br><br>
 
           <label>Senha:</label>
-          <input type="password" name="senha"><br><br>
+          <input type="password" id="senha" name="senha"><br><br>
 
-          <button type="submit" class="button3">Entrar</button>
+          <button type="button" onclick="authLogin()" class="button3">Entrar</button>
 
     </form>
     </fieldset>
@@ -89,3 +89,25 @@
 
 </body>
 </html>
+
+<script>
+  function authLogin() {
+
+    let login = document.getElementById("loginInput").value;
+    let senha = document.getElementById("senha").value;
+
+    const loginAuth = "adminwra";
+    const senhaAuth = "wra2023";
+
+    if(login === loginAuth && senha === senhaAuth) {
+
+      sessionStorage.setItem("auth", loginAuth + senhaAuth);
+      window.location.href = "principal/index.php";
+        
+    } else {
+
+      alert("Login e/ou senha incorretas.");
+      
+    }
+  }
+</script>
